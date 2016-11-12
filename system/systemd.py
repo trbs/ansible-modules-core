@@ -322,6 +322,8 @@ def main():
         # check systemctl result or if it is a init script
         if rc == 0:
             enabled = True
+        elif out.startswith('disabled'):
+            enabled = False
         elif rc == 1:
             # Deals with init scripts
             # if both init script and unit file exist stdout should have enabled/disabled, otherwise use rc entries
